@@ -37,7 +37,7 @@ fn run(path_to_input: &str, verbose: bool) -> Result<(), Error> {
 
   if !verbose {
     println!("{}", solved);
-    println!("Time taken: {} ms", start.elapsed().as_millis());
+    println!("Time taken: {} μs", start.elapsed().as_micros());
   };
 
   Ok(())
