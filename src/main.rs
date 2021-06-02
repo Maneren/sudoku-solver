@@ -32,7 +32,7 @@ fn run(path_to_input: &str) -> Result<(), Error> {
 
   let run_time = start.elapsed().as_micros();
 
-  println!("{}", solved);
+  println!("{}", render_solution(&board, &solved));
   if run_time < 20000 {
     println!("Time taken: {} μs", run_time);
   } else {
@@ -174,4 +174,36 @@ fn is_valid(board: &Board, last_play: &TilePointer) -> bool {
   }
 
   true
+}
+
+fn render_solution(original: &Board, solved: &Board) -> String {
+  use colored::*;
+  let base = format!("{}", original);
+  let mut base = base.chars();
+
+  let solved = format!("{}", solved);
+  let mut solved = solved.chars();
+
+  let length = Board::SIZE * (Board::SIZE + 1); // 9 * (9 + \n)
+
+  let mut output = Vec::<ColoredString>::with_capacity(length);
+
+  for _ in 0..length {
+    let base_char = base.next().unwrap();
+    let solved_char = solved.next().unwrap();
+
+    if solved_char == '\n' {
+      output.push(solved_char.to_string().white());
+      continue;
+    }
+    if base_char == solved_char {
+      output.push(solved_char.to_string().white());
+    } else {
+      output.push(solved_char.to_string().blue());
+    }
+  }
+
+  let output_string = output.iter().map(|string| format!("{}", string)).collect();
+
+  output_string
 }
