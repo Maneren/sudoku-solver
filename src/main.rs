@@ -52,6 +52,7 @@ fn load_input(path: &str) -> Result<String, Error> {
 fn parse_board(input_string: &str) -> Result<Board, Error> {
   // split string into Vec<Vec<chars>>
   let rows = input_string
+    .trim()
     .split('\n')
     .map(|row| row.chars().collect::<Vec<char>>())
     .collect::<Vec<Vec<char>>>();
