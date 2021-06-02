@@ -16,7 +16,7 @@ fn main() {
       Ok(_) => println!("Done!"),
       Err(msg) => println!("Error: {}", msg),
     },
-    _ => println!("Invalid arguments"),
+    _ => println!("Usage: sudoku input_file"),
   }
 }
 
