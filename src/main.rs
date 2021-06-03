@@ -9,8 +9,6 @@ use board::{Board, TilePointer};
 
 type Error = Box<dyn std::error::Error>;
 fn main() {
-  println!("Solving!\n");
-
   match &env::args().collect::<Vec<String>>()[..] {
     [_, input] => match run(input) {
       Ok(_) => println!("Done!"),
@@ -25,6 +23,8 @@ fn run(path_to_input: &str) -> Result<(), Error> {
   let board = parse_board(&input_string)?;
 
   println!("{}", board);
+  
+  println!("Solving!\n");
 
   let start = std::time::Instant::now();
 
@@ -33,7 +33,7 @@ fn run(path_to_input: &str) -> Result<(), Error> {
   let run_time = start.elapsed().as_micros();
 
   println!("{}", render_solution(&board, &solved));
-  if run_time < 20000 {
+  if run_time < 5000 {
     println!("Time taken: {} μs", run_time);
   } else {
     println!("Time taken: {} ms", run_time / 1000);
