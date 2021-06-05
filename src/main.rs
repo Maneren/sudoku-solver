@@ -184,7 +184,7 @@ fn render_solution(original: &Board, solved: &Board) -> String {
   let solved = format!("{}", solved);
   let mut solved = solved.chars();
 
-  let length = Board::SIZE * (Board::SIZE + 1); // 9 * (9 + \n)
+  let length = Board::SIZE * (Board::SIZE + 1); // 9 * (9 + '\n')
 
   let mut output = Vec::<ColoredString>::with_capacity(length);
 

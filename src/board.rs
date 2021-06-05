@@ -54,18 +54,6 @@ impl Board {
     Ok(Board { data })
   }
 
-  // pub fn get_row(&self, index: usize) -> Row {
-  //   self.data[index]
-  // }
-
-  // pub fn get_column(&self, index: usize) -> Column {
-  //   let mut column: Column = [None; Board::SIZE];
-  //   for i in 0..Board::SIZE {
-  //     column[i] = self.data[i][index];
-  //   }
-  //   column
-  // }
-
   pub fn get_tile(&self, ptr: TilePointer) -> Tile {
     let (x, y) = ptr;
     self.data[y][x]
