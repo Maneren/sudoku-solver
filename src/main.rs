@@ -23,7 +23,7 @@ fn run(path_to_input: &str) -> Result<(), Error> {
   let board = parse_board(&input_string)?;
 
   println!("{}", board);
-  
+
   println!("Solving!\n");
 
   let start = std::time::Instant::now();

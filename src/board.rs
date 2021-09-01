@@ -1,5 +1,5 @@
 pub struct Board {
-  data: [[Option<u32>; 9]; 9],
+  data: [[Tile; 9]; 9],
 }
 
 use std::error::Error;
@@ -25,12 +25,10 @@ impl Error for BoardError {
 pub type Tile = Option<u32>;
 pub type TilePointer = (usize, usize);
 pub type Row = [Tile; Board::SIZE];
-// pub type Column = [Tile; Board::SIZE];
-
 impl Board {
   pub const SIZE: usize = 9;
 
-  pub fn new(input_data: Vec<Vec<Option<u32>>>) -> Result<Board, BoardError> {
+  pub fn new(input_data: Vec<Vec<Tile>>) -> Result<Board, BoardError> {
     if input_data.len() != Self::SIZE {
       return Err(BoardError {
         msg: "Invalid row count".to_string(),
@@ -59,7 +57,7 @@ impl Board {
     self.data[y][x]
   }
 
-  pub fn set_tile(&mut self, ptr: TilePointer, value: Option<u32>) {
+  pub fn set_tile(&mut self, ptr: TilePointer, value: Tile) {
     let (x, y) = ptr;
     self.data[y][x] = value;
   }
